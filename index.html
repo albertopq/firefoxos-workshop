@@ -4,14 +4,15 @@
     <title>TumblrFilter</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/app_manager.js"></script>
 </head>
 <body>
-    <section id="list-view">
+    <section class="view" id="list-view">
         <ul id="images-container"></ul>
 
     </section>
 
-    <section id="display-view" hidden>
+    <section class="view" id="display-view" hidden>
         <button id="back">Back</button>
         <div id="image-container"></div>
         <select id="filters-selector">
@@ -20,6 +21,24 @@
           <option value="filter2">Filter 2</option>
           <option value="filter3">Filter 3</option>
         </select>
+    </section>
+
+    <section  hidden class="view" id="install-view">
+        <form role="dialog" data-type="confirm">
+          <section>
+            <h1 data-l10n-id="confirmation">Confirmation</h1>
+            <p>
+              <img src="img/icon-128.png" alt="BombFish Icon" height="55" width="55">
+              <strong>TumblrFilter</strong>
+              <small>FirefoxOS Workshop</small>
+            </p>
+            <p data-l10n-id="want-to-install">Do you want to download and install this application?</p>
+          </section>
+          <menu>
+            <button data-l10n-id="cancel">Cancel</button>
+            <button data-l10n-id="yes" class="recommend">Yes</button>
+          </menu>
+        </form>
     </section>
 
 </body>
