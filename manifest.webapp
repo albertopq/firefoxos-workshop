@@ -1,0 +1,12 @@
+{
+  "name": "TumblrFilter",
+  "description": "Download tumblr images and apply css filters",
+  "launch_path": "/index.html",
+  "icons": {
+    "128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "Alberto Pastor",
+    "url": "http://github.com/albertopq"
+  }
+}
