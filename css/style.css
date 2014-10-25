@@ -1,0 +1,38 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+section {
+  display: block;
+}
+
+section[hidden] {
+  display: none;
+}
+
+ul {
+  list-style: none;
+  padding: 1rem;
+  margin: 0;
+}
+
+ul li {
+  margin: 1rem 0;
+}
+
+img {
+  width: 100%;
+}
+
+.filter1 {
+  filter: grayscale(60%);
+}
+
+.filter2 {
+  filter: sepia(100%);
+}
+
+.filter3 {
+  filter: blur(5px);
+}
