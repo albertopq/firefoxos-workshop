@@ -59,6 +59,7 @@ var app = {
     var li = document.createElement('li');
     var img = document.createElement('img');
     img.src = photoUrl;
+    img.className = 'photo';
     img.onclick = app.displayImage;
     li.appendChild(img);
     return li;
