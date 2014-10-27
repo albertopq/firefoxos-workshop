@@ -20,6 +20,10 @@ section[hidden] {
   display: none;
 }
 
+section.dialog {
+  background-color: white;
+}
+
 ul {
   list-style: none;
   padding: 1rem;

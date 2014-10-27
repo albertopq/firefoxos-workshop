@@ -72,3 +72,4 @@ var app = {
 };
 
 window.addEventListener('load', app.init);
+
