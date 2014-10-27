@@ -2,6 +2,7 @@
   "name": "TumblrFilter",
   "description": "Download tumblr images and apply css filters",
   "launch_path": "/index.html",
+  "appcache_path": "/offline.appcache",
   "icons": {
     "128": "/img/icon-128.png"
   },
