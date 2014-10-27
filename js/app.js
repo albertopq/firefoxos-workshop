@@ -22,7 +22,7 @@ var app = {
     app.displayList();
     app.elements.back.addEventListener('click', app._goBack);
     app.elements.filtersSelector.addEventListener('change', function(evt) {
-      app.elements.imageContainer.className = evt.target.id;
+      app.elements.imageContainer.className = evt.target.value;
     });
   },
 
