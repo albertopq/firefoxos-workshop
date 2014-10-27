@@ -2,18 +2,30 @@
 <html>
 <head>
     <title>TumblrFilter</title>
+    <link rel="stylesheet" type="text/css" href="css/value_selector.css">
+    <link rel="stylesheet" type="text/css" href="css/confirm.css">
+    <link rel="stylesheet" type="text/css" href="css/headers.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/app_manager.js"></script>
 </head>
 <body>
     <section class="view" id="list-view">
+        <section role="region">
+          <header>
+            <h1>TumblrFilter</h1>
+          </header>
+        </section>
         <ul id="images-container"></ul>
-
     </section>
 
     <section class="view" id="display-view" hidden>
-        <button id="back">Back</button>
+        <section role="region">
+          <header>
+            <button id="back"><span class="icon icon-back">back</span></button>
+            <h1>TumblrFilter</h1>
+          </header>
+        </section>
         <div id="image-container"></div>
         <select id="filters-selector">
           <option value="none">None</option>
