@@ -1,6 +1,12 @@
 html, body {
   padding: 0;
   margin: 0;
+  font-size: 1.2rem;
+}
+
+select {
+  font-size: 1.2rem;
+  width: 8rem;
 }
 
 section {
@@ -26,13 +32,13 @@ img {
 }
 
 .filter1 {
-  filter: grayscale(60%);
+  filter: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxmaWx0ZXIKICAgICAgaWQ9ImludmVydEZpbHRlciIKICAgICAgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KICAgIDxmZUNvbG9yTWF0cml4CiAgICAgICAgdmFsdWVzPSItMSAwIDAgMCAxIDAgLTEgMCAwIDEgMCAwIC0xIDAgMSAwIDAgMCAxIDAgIiAvPgogIDwvZmlsdGVyPgo8L3N2Zz4K#invertFilter);
 }
 
 .filter2 {
-  filter: sepia(100%);
+  filter:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' ><filter id='gray50'><feColorMatrix in='SourceGraphic' type='saturate' values='0.5' /></filter></svg>#gray50");
 }
 
 .filter3 {
-  filter: blur(5px);
+  filter:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' ><filter id='sepia'><feColorMatrix in='SourceGraphic' type='matrix' values='.393 .769 .189 0 0    .349 .686 .168 0 0    .272 .534 .181 0 0    0 0 0 1 0' /></filter></svg>#sepia");
 }
