@@ -9,5 +9,15 @@
   "developer": {
     "name": "Alberto Pastor",
     "url": "http://github.com/albertopq"
+  },
+  "activities": {
+    "pick": {
+      "href": "./index.html",
+      "disposition": "inline",
+      "filters": {
+        "type": ["image/*","image/jpeg","image/png"]
+      },
+      "returnValue": true
+    }
   }
 }

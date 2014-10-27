@@ -2,6 +2,8 @@
 var app = {
   QUERY_URL: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20tumblr.posts%20where%20username%3D"benlowy"&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=app._parseFeed',
   MAX_IMAGES: 20,
+  inActivity: false,
+  activityRequest: null,
   selectors: {
     listView: '#list-view',
     imageList: '#image-list',
@@ -10,7 +12,8 @@ var app = {
     imagesContainer: '#images-container',
     imageContainer: '#image-container',
     filtersSelector: '#filters-selector',
-    back: '#back'
+    back: '#back',
+    closeActivity: '#close-activity'
   },
   elements: {},
 
@@ -21,6 +24,9 @@ var app = {
     });
     app.displayList();
     app.elements.back.addEventListener('click', app._goBack);
+    app.elements.closeActivity.addEventListener('click', function() {
+      app.activityRequest.postError('Acitity canceled');
+    });
     app.elements.filtersSelector.addEventListener('change', function(evt) {
       app.elements.imageContainer.className = evt.target.value;
     });
@@ -39,6 +45,12 @@ var app = {
     app.elements.imageContainer.appendChild(image);
     app.elements.displayView.removeAttribute('hidden');
     app.elements.listView.hidden = true;
+  },
+
+  handleActivity: function(activityRequest) {
+    app.inActivity = true;
+    app.activityRequest = activityRequest;
+    app.elements.closeActivity.removeAttribute('hidden');
   },
 
   _parseFeed: function(feed) {
@@ -60,9 +72,29 @@ var app = {
     var img = document.createElement('img');
     img.src = photoUrl;
     img.className = 'photo';
-    img.onclick = app.displayImage;
+    img.onclick = function(evt) {
+      if (app.inActivity) {
+        app._returnBlob(img);
+        // app.inActivity = false;
+      } else {
+        app.displayImage(evt);
+      }
+    };
     li.appendChild(img);
     return li;
+  },
+
+  _returnBlob: function(img) {
+    var x = new XMLHttpRequest();
+    x.open('GET', img.src);
+    x.responseType = 'blob';
+    x.onload = function() {
+      var file = x.response;
+      app.activityRequest.postResult({
+        blob: file
+      });
+    };
+    x.send();
   },
 
   _goBack: function() {
@@ -72,6 +104,9 @@ var app = {
 };
 
 window.addEventListener('load', app.init);
+if (navigator.mozSetMessageHandler) {
+  navigator.mozSetMessageHandler('activity', app.handleActivity);
+}
 
 (function() {
   var defaultFontSize = 62.5;

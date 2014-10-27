@@ -16,8 +16,8 @@ section.view {
   display: block;
 }
 
-section[hidden] {
-  display: none;
+section[hidden], button[hidden] {
+  display: none !important;
 }
 
 section.dialog {
