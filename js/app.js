@@ -1,6 +1,6 @@
 
 var app = {
-  QUERY_URL: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20tumblr.posts%20where%20username%3D"benlowy"&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=',
+  QUERY_URL: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20tumblr.posts%20where%20username%3D"benlowy"&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=app._parseFeed',
   MAX_IMAGES: 20,
   selectors: {
     listView: '#list-view',
@@ -27,14 +27,10 @@ var app = {
   },
 
   displayList: function() {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-      if (request.readyState === 4) {
-        app._parseFeed(request.responseText);
-      }
-    };
-    request.open('GET', app.QUERY_URL, true);
-    request.send();
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = app.QUERY_URL;
+    document.head.appendChild(script);
   },
 
   displayImage: function(evt) {
@@ -46,7 +42,7 @@ var app = {
   },
 
   _parseFeed: function(feed) {
-    var images = JSON.parse(feed).query.results.posts.post;
+    var images = feed.query.results.posts.post;
     for (var i = 0; i < app.MAX_IMAGES; i++) {
       var current = app._buildImage(images[i]);
       if (!current)
@@ -59,7 +55,7 @@ var app = {
     if (!image['photo-url'])
       return;
 
-    var photoUrl = image['photo-url'][0].content;
+    var photoUrl = image['photo-url'][2].content;
     var li = document.createElement('li');
     var img = document.createElement('img');
     img.src = photoUrl;
