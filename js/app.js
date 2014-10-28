@@ -30,6 +30,7 @@ var app = {
     app.elements.filtersSelector.addEventListener('change', function(evt) {
       app.elements.imageContainer.className = evt.target.value;
     });
+    app._triggerNotification();
   },
 
   displayList: function() {
@@ -51,6 +52,10 @@ var app = {
     app.inActivity = true;
     app.activityRequest = activityRequest;
     app.elements.closeActivity.removeAttribute('hidden');
+  },
+
+  _triggerNotification: function() {
+    var notification = new Notification('Hey, you just opened the app!');
   },
 
   _parseFeed: function(feed) {
